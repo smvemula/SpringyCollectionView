@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="gTV-IL-0wX" customClass="RowCollectionViewCell" customModule="CollectionViewDynamicLoadingCells" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="1000" height="300"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="1000" height="300"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title For Row" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jnl-Ln-uIc">
+                        <rect key="frame" x="15" y="0.0" width="240" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="RnO-sp-vFr"/>
+                            <constraint firstAttribute="width" constant="240" id="bc5-XP-NSN"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <collectionView opaque="NO" multipleTouchEnabled="YES" contentMode="scaleToFill" directionalLockEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" indicatorStyle="white" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="GWL-GV-tad">
+                        <rect key="frame" x="0.0" y="24" width="1000" height="271"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <inset key="scrollIndicatorInsets" minX="50" minY="50" maxX="50" maxY="50"/>
+                        <collectionViewLayout key="collectionViewLayout" id="BX9-cQ-Jay" customClass="THSpringyFlowLayout"/>
+                        <connections>
+                            <outlet property="dataSource" destination="gTV-IL-0wX" id="xpA-ge-fwM"/>
+                            <outlet property="delegate" destination="gTV-IL-0wX" id="dxh-Jx-o5q"/>
+                        </connections>
+                    </collectionView>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            </view>
+            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="GWL-GV-tad" secondAttribute="bottom" constant="5" id="2yj-pP-oEh"/>
+                <constraint firstItem="Jnl-Ln-uIc" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="BEE-VU-hJe"/>
+                <constraint firstItem="GWL-GV-tad" firstAttribute="top" secondItem="Jnl-Ln-uIc" secondAttribute="bottom" constant="3" id="MHw-ss-ha3"/>
+                <constraint firstAttribute="trailing" secondItem="GWL-GV-tad" secondAttribute="trailing" id="W4m-85-RnG"/>
+                <constraint firstItem="GWL-GV-tad" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="ktC-tT-o3I"/>
+                <constraint firstItem="Jnl-Ln-uIc" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="15" id="lWV-Jb-l4O"/>
+            </constraints>
+            <size key="customSize" width="546" height="124"/>
+            <connections>
+                <outlet property="booksRow" destination="GWL-GV-tad" id="8bj-aa-csQ"/>
+                <outlet property="title" destination="Jnl-Ln-uIc" id="Aol-IX-E3e"/>
+            </connections>
+            <point key="canvasLocation" x="616" y="362"/>
+        </collectionViewCell>
+    </objects>
+</document>

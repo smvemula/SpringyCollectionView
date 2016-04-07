@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		910543521CB591C4003CCB20 /* SpingFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 910543511CB591C4003CCB20 /* SpingFlowLayout.m */; };
+		910543551CB59952003CCB20 /* THSpringyFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 910543541CB59952003CCB20 /* THSpringyFlowLayout.m */; };
+		910543581CB5EBF0003CCB20 /* StretchyHeaderSpringyCollectionViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 910543571CB5EBF0003CCB20 /* StretchyHeaderSpringyCollectionViewLayout.m */; };
+		91790E951CAF2DD3009EFFFE /* BookCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91790E931CAF2DD3009EFFFE /* BookCVCell.swift */; };
+		91790E961CAF2DD3009EFFFE /* BookCVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91790E941CAF2DD3009EFFFE /* BookCVCell.xib */; };
+		91790E981CAF4AC5009EFFFE /* CategoryHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91790E971CAF4AC5009EFFFE /* CategoryHeaderView.swift */; };
 		91D4F3ED1CAEEEAE0036D0A3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D4F3EC1CAEEEAE0036D0A3 /* AppDelegate.swift */; };
 		91D4F3EF1CAEEEAE0036D0A3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D4F3EE1CAEEEAE0036D0A3 /* ViewController.swift */; };
 		91D4F3F21CAEEEAE0036D0A3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91D4F3F01CAEEEAE0036D0A3 /* Main.storyboard */; };
@@ -14,6 +20,10 @@
 		91D4F3F71CAEEEAE0036D0A3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91D4F3F51CAEEEAE0036D0A3 /* LaunchScreen.storyboard */; };
 		91D4F4021CAEEEAE0036D0A3 /* CollectionViewDynamicLoadingCellsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D4F4011CAEEEAE0036D0A3 /* CollectionViewDynamicLoadingCellsTests.swift */; };
 		91D4F40D1CAEEEAE0036D0A3 /* CollectionViewDynamicLoadingCellsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D4F40C1CAEEEAE0036D0A3 /* CollectionViewDynamicLoadingCellsUITests.swift */; };
+		91D4F41C1CAEF33F0036D0A3 /* RowCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D4F41A1CAEF33F0036D0A3 /* RowCollectionViewCell.swift */; };
+		91D4F41D1CAEF33F0036D0A3 /* RowCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91D4F41B1CAEF33F0036D0A3 /* RowCollectionViewCell.xib */; };
+		91D4F4201CAEF7600036D0A3 /* LoadingCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D4F41E1CAEF7600036D0A3 /* LoadingCVCell.swift */; };
+		91D4F4211CAEF7600036D0A3 /* LoadingCVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91D4F41F1CAEF7600036D0A3 /* LoadingCVCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +44,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9105434F1CB591C4003CCB20 /* CollectionViewDynamicLoadingCells-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CollectionViewDynamicLoadingCells-Bridging-Header.h"; sourceTree = "<group>"; };
+		910543501CB591C4003CCB20 /* SpingFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpingFlowLayout.h; sourceTree = "<group>"; };
+		910543511CB591C4003CCB20 /* SpingFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpingFlowLayout.m; sourceTree = "<group>"; };
+		910543531CB59952003CCB20 /* THSpringyFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THSpringyFlowLayout.h; sourceTree = "<group>"; };
+		910543541CB59952003CCB20 /* THSpringyFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THSpringyFlowLayout.m; sourceTree = "<group>"; };
+		910543561CB5EBF0003CCB20 /* StretchyHeaderSpringyCollectionViewLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StretchyHeaderSpringyCollectionViewLayout.h; sourceTree = "<group>"; };
+		910543571CB5EBF0003CCB20 /* StretchyHeaderSpringyCollectionViewLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StretchyHeaderSpringyCollectionViewLayout.m; sourceTree = "<group>"; };
+		91790E931CAF2DD3009EFFFE /* BookCVCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookCVCell.swift; sourceTree = "<group>"; };
+		91790E941CAF2DD3009EFFFE /* BookCVCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BookCVCell.xib; sourceTree = "<group>"; };
+		91790E971CAF4AC5009EFFFE /* CategoryHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryHeaderView.swift; sourceTree = "<group>"; };
 		91D4F3E91CAEEEAE0036D0A3 /* CollectionViewDynamicLoadingCells.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CollectionViewDynamicLoadingCells.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		91D4F3EC1CAEEEAE0036D0A3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		91D4F3EE1CAEEEAE0036D0A3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -47,6 +67,10 @@
 		91D4F4081CAEEEAE0036D0A3 /* CollectionViewDynamicLoadingCellsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CollectionViewDynamicLoadingCellsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		91D4F40C1CAEEEAE0036D0A3 /* CollectionViewDynamicLoadingCellsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewDynamicLoadingCellsUITests.swift; sourceTree = "<group>"; };
 		91D4F40E1CAEEEAE0036D0A3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		91D4F41A1CAEF33F0036D0A3 /* RowCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RowCollectionViewCell.swift; sourceTree = "<group>"; };
+		91D4F41B1CAEF33F0036D0A3 /* RowCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RowCollectionViewCell.xib; sourceTree = "<group>"; };
+		91D4F41E1CAEF7600036D0A3 /* LoadingCVCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingCVCell.swift; sourceTree = "<group>"; };
+		91D4F41F1CAEF7600036D0A3 /* LoadingCVCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoadingCVCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +127,20 @@
 				91D4F3F31CAEEEAE0036D0A3 /* Assets.xcassets */,
 				91D4F3F51CAEEEAE0036D0A3 /* LaunchScreen.storyboard */,
 				91D4F3F81CAEEEAE0036D0A3 /* Info.plist */,
+				91D4F41A1CAEF33F0036D0A3 /* RowCollectionViewCell.swift */,
+				91D4F41B1CAEF33F0036D0A3 /* RowCollectionViewCell.xib */,
+				91D4F41E1CAEF7600036D0A3 /* LoadingCVCell.swift */,
+				91D4F41F1CAEF7600036D0A3 /* LoadingCVCell.xib */,
+				91790E931CAF2DD3009EFFFE /* BookCVCell.swift */,
+				91790E941CAF2DD3009EFFFE /* BookCVCell.xib */,
+				91790E971CAF4AC5009EFFFE /* CategoryHeaderView.swift */,
+				910543501CB591C4003CCB20 /* SpingFlowLayout.h */,
+				910543511CB591C4003CCB20 /* SpingFlowLayout.m */,
+				910543531CB59952003CCB20 /* THSpringyFlowLayout.h */,
+				910543541CB59952003CCB20 /* THSpringyFlowLayout.m */,
+				910543561CB5EBF0003CCB20 /* StretchyHeaderSpringyCollectionViewLayout.h */,
+				910543571CB5EBF0003CCB20 /* StretchyHeaderSpringyCollectionViewLayout.m */,
+				9105434F1CB591C4003CCB20 /* CollectionViewDynamicLoadingCells-Bridging-Header.h */,
 			);
 			path = CollectionViewDynamicLoadingCells;
 			sourceTree = "<group>";
@@ -230,8 +268,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				91D4F3F71CAEEEAE0036D0A3 /* LaunchScreen.storyboard in Resources */,
+				91D4F4211CAEF7600036D0A3 /* LoadingCVCell.xib in Resources */,
+				91D4F41D1CAEF33F0036D0A3 /* RowCollectionViewCell.xib in Resources */,
 				91D4F3F41CAEEEAE0036D0A3 /* Assets.xcassets in Resources */,
 				91D4F3F21CAEEEAE0036D0A3 /* Main.storyboard in Resources */,
+				91790E961CAF2DD3009EFFFE /* BookCVCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -256,7 +297,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				91D4F41C1CAEF33F0036D0A3 /* RowCollectionViewCell.swift in Sources */,
+				91790E981CAF4AC5009EFFFE /* CategoryHeaderView.swift in Sources */,
+				910543581CB5EBF0003CCB20 /* StretchyHeaderSpringyCollectionViewLayout.m in Sources */,
+				910543521CB591C4003CCB20 /* SpingFlowLayout.m in Sources */,
+				91D4F4201CAEF7600036D0A3 /* LoadingCVCell.swift in Sources */,
 				91D4F3EF1CAEEEAE0036D0A3 /* ViewController.swift in Sources */,
+				91790E951CAF2DD3009EFFFE /* BookCVCell.swift in Sources */,
+				910543551CB59952003CCB20 /* THSpringyFlowLayout.m in Sources */,
 				91D4F3ED1CAEEEAE0036D0A3 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -401,10 +449,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = CollectionViewDynamicLoadingCells/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.randomProject.ProtoypeProject.CollectionViewDynamicLoadingCells;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "CollectionViewDynamicLoadingCells/CollectionViewDynamicLoadingCells-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -412,10 +463,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = CollectionViewDynamicLoadingCells/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.randomProject.ProtoypeProject.CollectionViewDynamicLoadingCells;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "CollectionViewDynamicLoadingCells/CollectionViewDynamicLoadingCells-Bridging-Header.h";
 			};
 			name = Release;
 		};
@@ -484,6 +537,7 @@
 				91D4F4131CAEEEAE0036D0A3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		91D4F4141CAEEEAE0036D0A3 /* Build configuration list for PBXNativeTarget "CollectionViewDynamicLoadingCellsTests" */ = {
 			isa = XCConfigurationList;
@@ -492,6 +546,7 @@
 				91D4F4161CAEEEAE0036D0A3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		91D4F4171CAEEEAE0036D0A3 /* Build configuration list for PBXNativeTarget "CollectionViewDynamicLoadingCellsUITests" */ = {
 			isa = XCConfigurationList;
@@ -500,6 +555,7 @@
 				91D4F4191CAEEEAE0036D0A3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
