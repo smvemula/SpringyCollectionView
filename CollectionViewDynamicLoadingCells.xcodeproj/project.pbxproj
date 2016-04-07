@@ -98,6 +98,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9105435B1CB6F36E003CCB20 /* SpringyStuff */ = {
+			isa = PBXGroup;
+			children = (
+				910543501CB591C4003CCB20 /* SpingFlowLayout.h */,
+				910543511CB591C4003CCB20 /* SpingFlowLayout.m */,
+				910543531CB59952003CCB20 /* THSpringyFlowLayout.h */,
+				910543541CB59952003CCB20 /* THSpringyFlowLayout.m */,
+				910543561CB5EBF0003CCB20 /* StretchyHeaderSpringyCollectionViewLayout.h */,
+				910543571CB5EBF0003CCB20 /* StretchyHeaderSpringyCollectionViewLayout.m */,
+			);
+			name = SpringyStuff;
+			sourceTree = "<group>";
+		};
+		9105435C1CB6F385003CCB20 /* CustomViews/Cells */ = {
+			isa = PBXGroup;
+			children = (
+				91D4F41A1CAEF33F0036D0A3 /* RowCollectionViewCell.swift */,
+				91D4F41B1CAEF33F0036D0A3 /* RowCollectionViewCell.xib */,
+				91D4F41E1CAEF7600036D0A3 /* LoadingCVCell.swift */,
+				91D4F41F1CAEF7600036D0A3 /* LoadingCVCell.xib */,
+				91790E931CAF2DD3009EFFFE /* BookCVCell.swift */,
+				91790E941CAF2DD3009EFFFE /* BookCVCell.xib */,
+				91790E971CAF4AC5009EFFFE /* CategoryHeaderView.swift */,
+			);
+			name = CustomViews/Cells;
+			sourceTree = "<group>";
+		};
 		91D4F3E01CAEEEAE0036D0A3 = {
 			isa = PBXGroup;
 			children = (
@@ -121,25 +148,14 @@
 		91D4F3EB1CAEEEAE0036D0A3 /* CollectionViewDynamicLoadingCells */ = {
 			isa = PBXGroup;
 			children = (
+				9105435C1CB6F385003CCB20 /* CustomViews/Cells */,
+				9105435B1CB6F36E003CCB20 /* SpringyStuff */,
 				91D4F3EC1CAEEEAE0036D0A3 /* AppDelegate.swift */,
 				91D4F3EE1CAEEEAE0036D0A3 /* ViewController.swift */,
 				91D4F3F01CAEEEAE0036D0A3 /* Main.storyboard */,
 				91D4F3F31CAEEEAE0036D0A3 /* Assets.xcassets */,
 				91D4F3F51CAEEEAE0036D0A3 /* LaunchScreen.storyboard */,
 				91D4F3F81CAEEEAE0036D0A3 /* Info.plist */,
-				91D4F41A1CAEF33F0036D0A3 /* RowCollectionViewCell.swift */,
-				91D4F41B1CAEF33F0036D0A3 /* RowCollectionViewCell.xib */,
-				91D4F41E1CAEF7600036D0A3 /* LoadingCVCell.swift */,
-				91D4F41F1CAEF7600036D0A3 /* LoadingCVCell.xib */,
-				91790E931CAF2DD3009EFFFE /* BookCVCell.swift */,
-				91790E941CAF2DD3009EFFFE /* BookCVCell.xib */,
-				91790E971CAF4AC5009EFFFE /* CategoryHeaderView.swift */,
-				910543501CB591C4003CCB20 /* SpingFlowLayout.h */,
-				910543511CB591C4003CCB20 /* SpingFlowLayout.m */,
-				910543531CB59952003CCB20 /* THSpringyFlowLayout.h */,
-				910543541CB59952003CCB20 /* THSpringyFlowLayout.m */,
-				910543561CB5EBF0003CCB20 /* StretchyHeaderSpringyCollectionViewLayout.h */,
-				910543571CB5EBF0003CCB20 /* StretchyHeaderSpringyCollectionViewLayout.m */,
 				9105434F1CB591C4003CCB20 /* CollectionViewDynamicLoadingCells-Bridging-Header.h */,
 			);
 			path = CollectionViewDynamicLoadingCells;
