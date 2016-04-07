@@ -174,7 +174,7 @@ class ViewController: UIViewController, UIScrollViewDelegate, UICollectionViewDe
             self.dataRows[self.categories.last!] = tempArray
             
             if let strechyHeader = self.browseContentView.collectionViewLayout as? StretchyHeaderSpringyCollectionViewLayout {
-                strechyHeader.sprin
+                //strechyHeader.sprin
             }
             //ONLY Reload New Category with minimum rows
             self.browseContentView.performBatchUpdates({
