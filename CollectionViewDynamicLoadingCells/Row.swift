@@ -42,6 +42,9 @@ class Row: NSObject {
                     current.nextIndex = nextIndex
                 }
                 current.rows.append(self)
+                if current.fetchedAllRows {
+                    current.nextIndex = current.rows.count
+                }
             }
         }
         
