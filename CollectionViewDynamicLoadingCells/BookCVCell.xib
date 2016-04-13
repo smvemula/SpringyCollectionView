@@ -16,13 +16,14 @@
                     <imageView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4Qd-HN-6He">
                         <rect key="frame" x="0.0" y="0.0" width="159" height="152"/>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SDl-Cp-ogb">
-                        <rect key="frame" x="5" y="122" width="149" height="30"/>
+                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SDl-Cp-ogb">
+                        <rect key="frame" x="0.0" y="127" width="159" height="25"/>
+                        <color key="backgroundColor" white="1" alpha="0.90000000000000002" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="30" id="L2g-3b-0g7"/>
+                            <constraint firstAttribute="height" constant="25" id="L2g-3b-0g7"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
@@ -30,12 +31,12 @@
             </view>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="4Qd-HN-6He" secondAttribute="trailing" id="7vY-Td-Qx0"/>
-                <constraint firstAttribute="trailing" secondItem="SDl-Cp-ogb" secondAttribute="trailing" constant="5" id="R44-4v-wOp"/>
+                <constraint firstAttribute="trailing" secondItem="SDl-Cp-ogb" secondAttribute="trailing" id="R44-4v-wOp"/>
                 <constraint firstAttribute="bottom" secondItem="4Qd-HN-6He" secondAttribute="bottom" id="Ze7-x5-rMP"/>
                 <constraint firstItem="4Qd-HN-6He" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="eaV-Zu-Vlb"/>
                 <constraint firstItem="4Qd-HN-6He" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="sqm-I0-36c"/>
                 <constraint firstAttribute="bottom" secondItem="SDl-Cp-ogb" secondAttribute="bottom" id="vHX-Ru-M9O"/>
-                <constraint firstItem="SDl-Cp-ogb" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="5" id="vXq-Wn-7pN"/>
+                <constraint firstItem="SDl-Cp-ogb" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="vXq-Wn-7pN"/>
             </constraints>
             <size key="customSize" width="159" height="152"/>
             <connections>

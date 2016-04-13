@@ -12,6 +12,13 @@ class RowCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet var booksRow: UICollectionView!
     @IBOutlet var title: UILabel!
+    
+    var row: Row! {
+        didSet {
+            self.title.text = row.title
+            self.booksRow.reloadData()
+        }
+    }
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -38,7 +45,7 @@ extension RowCollectionViewCell {
             cell = nib[0] as? BookCVCell
         }
         
-        cell?.bookTitle.text = "Book \(indexPath.row)"
+        cell?.book = self.row.books[indexPath.row]
         cell?.bookCover.backgroundColor = self.getRandomColor()
         
         return cell!
@@ -58,14 +65,14 @@ extension RowCollectionViewCell {
     }
     
     func collectionView(collectionView : UICollectionView,layout  collectionViewLayout:UICollectionViewLayout,sizeForItemAtIndexPath indexPath:NSIndexPath) -> CGSize {
-        return CGSizeMake(112, 112)
+        return CGSizeMake(112*0.75 + 10, 112)
     }
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         collectionView.deselectItemAtIndexPath(indexPath, animated: true)
     }
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 20
+        return self.row.books.count
     }
     func scrollViewWillEndDragging(scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
             

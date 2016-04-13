@@ -10,6 +10,19 @@
 		910543521CB591C4003CCB20 /* SpingFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 910543511CB591C4003CCB20 /* SpingFlowLayout.m */; };
 		910543551CB59952003CCB20 /* THSpringyFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 910543541CB59952003CCB20 /* THSpringyFlowLayout.m */; };
 		910543581CB5EBF0003CCB20 /* StretchyHeaderSpringyCollectionViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 910543571CB5EBF0003CCB20 /* StretchyHeaderSpringyCollectionViewLayout.m */; };
+		9105435F1CB6F42B003CCB20 /* MyAPIs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9105435D1CB6F42B003CCB20 /* MyAPIs.swift */; };
+		910543601CB6F42B003CCB20 /* MyNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9105435E1CB6F42B003CCB20 /* MyNetwork.swift */; };
+		910543691CB6F462003CCB20 /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910543611CB6F462003CCB20 /* ArrayExtension.swift */; };
+		9105436A1CB6F462003CCB20 /* NSDateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910543621CB6F462003CCB20 /* NSDateExtension.swift */; };
+		9105436B1CB6F462003CCB20 /* NSDictionaryExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910543631CB6F462003CCB20 /* NSDictionaryExtension.swift */; };
+		9105436C1CB6F462003CCB20 /* NSJSONSerializationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910543641CB6F462003CCB20 /* NSJSONSerializationExtension.swift */; };
+		9105436D1CB6F462003CCB20 /* UIAlertViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910543651CB6F462003CCB20 /* UIAlertViewExtension.swift */; };
+		9105436E1CB6F462003CCB20 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910543661CB6F462003CCB20 /* UIColorExtension.swift */; };
+		9105436F1CB6F462003CCB20 /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910543671CB6F462003CCB20 /* UIImageExtension.swift */; };
+		910543701CB6F462003CCB20 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910543681CB6F462003CCB20 /* UIViewExtension.swift */; };
+		910543741CB6FB09003CCB20 /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910543731CB6FB09003CCB20 /* Book.swift */; };
+		910543771CB71D89003CCB20 /* Row.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910543761CB71D89003CCB20 /* Row.swift */; };
+		910543791CB71E7C003CCB20 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910543781CB71E7C003CCB20 /* Category.swift */; };
 		91790E951CAF2DD3009EFFFE /* BookCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91790E931CAF2DD3009EFFFE /* BookCVCell.swift */; };
 		91790E961CAF2DD3009EFFFE /* BookCVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91790E941CAF2DD3009EFFFE /* BookCVCell.xib */; };
 		91790E981CAF4AC5009EFFFE /* CategoryHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91790E971CAF4AC5009EFFFE /* CategoryHeaderView.swift */; };
@@ -51,6 +64,19 @@
 		910543541CB59952003CCB20 /* THSpringyFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THSpringyFlowLayout.m; sourceTree = "<group>"; };
 		910543561CB5EBF0003CCB20 /* StretchyHeaderSpringyCollectionViewLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StretchyHeaderSpringyCollectionViewLayout.h; sourceTree = "<group>"; };
 		910543571CB5EBF0003CCB20 /* StretchyHeaderSpringyCollectionViewLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StretchyHeaderSpringyCollectionViewLayout.m; sourceTree = "<group>"; };
+		9105435D1CB6F42B003CCB20 /* MyAPIs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyAPIs.swift; sourceTree = "<group>"; };
+		9105435E1CB6F42B003CCB20 /* MyNetwork.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyNetwork.swift; sourceTree = "<group>"; };
+		910543611CB6F462003CCB20 /* ArrayExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
+		910543621CB6F462003CCB20 /* NSDateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDateExtension.swift; sourceTree = "<group>"; };
+		910543631CB6F462003CCB20 /* NSDictionaryExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDictionaryExtension.swift; sourceTree = "<group>"; };
+		910543641CB6F462003CCB20 /* NSJSONSerializationExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSJSONSerializationExtension.swift; sourceTree = "<group>"; };
+		910543651CB6F462003CCB20 /* UIAlertViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIAlertViewExtension.swift; sourceTree = "<group>"; };
+		910543661CB6F462003CCB20 /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
+		910543671CB6F462003CCB20 /* UIImageExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
+		910543681CB6F462003CCB20 /* UIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
+		910543731CB6FB09003CCB20 /* Book.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
+		910543761CB71D89003CCB20 /* Row.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Row.swift; sourceTree = "<group>"; };
+		910543781CB71E7C003CCB20 /* Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		91790E931CAF2DD3009EFFFE /* BookCVCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookCVCell.swift; sourceTree = "<group>"; };
 		91790E941CAF2DD3009EFFFE /* BookCVCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BookCVCell.xib; sourceTree = "<group>"; };
 		91790E971CAF4AC5009EFFFE /* CategoryHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryHeaderView.swift; sourceTree = "<group>"; };
@@ -125,6 +151,40 @@
 			name = CustomViews/Cells;
 			sourceTree = "<group>";
 		};
+		910543711CB6F464003CCB20 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				910543611CB6F462003CCB20 /* ArrayExtension.swift */,
+				910543621CB6F462003CCB20 /* NSDateExtension.swift */,
+				910543631CB6F462003CCB20 /* NSDictionaryExtension.swift */,
+				910543641CB6F462003CCB20 /* NSJSONSerializationExtension.swift */,
+				910543651CB6F462003CCB20 /* UIAlertViewExtension.swift */,
+				910543661CB6F462003CCB20 /* UIColorExtension.swift */,
+				910543671CB6F462003CCB20 /* UIImageExtension.swift */,
+				910543681CB6F462003CCB20 /* UIViewExtension.swift */,
+			);
+			name = Extensions;
+			sourceTree = "<group>";
+		};
+		910543721CB6F475003CCB20 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				9105435D1CB6F42B003CCB20 /* MyAPIs.swift */,
+				9105435E1CB6F42B003CCB20 /* MyNetwork.swift */,
+			);
+			name = Network;
+			sourceTree = "<group>";
+		};
+		910543751CB71D6B003CCB20 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				910543731CB6FB09003CCB20 /* Book.swift */,
+				910543761CB71D89003CCB20 /* Row.swift */,
+				910543781CB71E7C003CCB20 /* Category.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		91D4F3E01CAEEEAE0036D0A3 = {
 			isa = PBXGroup;
 			children = (
@@ -148,6 +208,9 @@
 		91D4F3EB1CAEEEAE0036D0A3 /* CollectionViewDynamicLoadingCells */ = {
 			isa = PBXGroup;
 			children = (
+				910543751CB71D6B003CCB20 /* Model */,
+				910543721CB6F475003CCB20 /* Network */,
+				910543711CB6F464003CCB20 /* Extensions */,
 				9105435C1CB6F385003CCB20 /* CustomViews/Cells */,
 				9105435B1CB6F36E003CCB20 /* SpringyStuff */,
 				91D4F3EC1CAEEEAE0036D0A3 /* AppDelegate.swift */,
@@ -313,15 +376,28 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9105436E1CB6F462003CCB20 /* UIColorExtension.swift in Sources */,
 				91D4F41C1CAEF33F0036D0A3 /* RowCollectionViewCell.swift in Sources */,
 				91790E981CAF4AC5009EFFFE /* CategoryHeaderView.swift in Sources */,
+				9105436B1CB6F462003CCB20 /* NSDictionaryExtension.swift in Sources */,
+				9105436D1CB6F462003CCB20 /* UIAlertViewExtension.swift in Sources */,
+				9105436F1CB6F462003CCB20 /* UIImageExtension.swift in Sources */,
 				910543581CB5EBF0003CCB20 /* StretchyHeaderSpringyCollectionViewLayout.m in Sources */,
+				910543691CB6F462003CCB20 /* ArrayExtension.swift in Sources */,
+				910543741CB6FB09003CCB20 /* Book.swift in Sources */,
 				910543521CB591C4003CCB20 /* SpingFlowLayout.m in Sources */,
 				91D4F4201CAEF7600036D0A3 /* LoadingCVCell.swift in Sources */,
 				91D4F3EF1CAEEEAE0036D0A3 /* ViewController.swift in Sources */,
+				9105435F1CB6F42B003CCB20 /* MyAPIs.swift in Sources */,
+				910543601CB6F42B003CCB20 /* MyNetwork.swift in Sources */,
+				910543701CB6F462003CCB20 /* UIViewExtension.swift in Sources */,
 				91790E951CAF2DD3009EFFFE /* BookCVCell.swift in Sources */,
+				9105436A1CB6F462003CCB20 /* NSDateExtension.swift in Sources */,
 				910543551CB59952003CCB20 /* THSpringyFlowLayout.m in Sources */,
+				9105436C1CB6F462003CCB20 /* NSJSONSerializationExtension.swift in Sources */,
+				910543771CB71D89003CCB20 /* Row.swift in Sources */,
 				91D4F3ED1CAEEEAE0036D0A3 /* AppDelegate.swift in Sources */,
+				910543791CB71E7C003CCB20 /* Category.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

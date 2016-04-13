@@ -13,37 +13,43 @@
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                 <rect key="frame" x="0.0" y="0.0" width="1000" height="300"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title For Row" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jnl-Ln-uIc">
-                        <rect key="frame" x="15" y="0.0" width="240" height="21"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="21" id="RnO-sp-vFr"/>
-                            <constraint firstAttribute="width" constant="240" id="bc5-XP-NSN"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                     <collectionView opaque="NO" multipleTouchEnabled="YES" contentMode="scaleToFill" directionalLockEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" indicatorStyle="white" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="GWL-GV-tad">
-                        <rect key="frame" x="0.0" y="24" width="1000" height="271"/>
+                        <rect key="frame" x="0.0" y="29" width="1000" height="266"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                        <inset key="scrollIndicatorInsets" minX="50" minY="50" maxX="50" maxY="50"/>
+                        <inset key="scrollIndicatorInsets" minX="0.0" minY="50" maxX="50" maxY="50"/>
                         <collectionViewLayout key="collectionViewLayout" id="BX9-cQ-Jay" customClass="THSpringyFlowLayout"/>
                         <connections>
                             <outlet property="dataSource" destination="gTV-IL-0wX" id="xpA-ge-fwM"/>
                             <outlet property="delegate" destination="gTV-IL-0wX" id="dxh-Jx-o5q"/>
                         </connections>
                     </collectionView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title For Row" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jnl-Ln-uIc">
+                        <rect key="frame" x="0.0" y="5" width="985" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="RnO-sp-vFr"/>
+                            <constraint firstAttribute="width" constant="240" id="bc5-XP-NSN"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="bc5-XP-NSN"/>
+                            </mask>
+                        </variation>
+                    </label>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </view>
-            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="GWL-GV-tad" secondAttribute="bottom" constant="5" id="2yj-pP-oEh"/>
-                <constraint firstItem="Jnl-Ln-uIc" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="BEE-VU-hJe"/>
+                <constraint firstAttribute="trailing" secondItem="Jnl-Ln-uIc" secondAttribute="trailing" constant="15" id="36e-f2-Zhh"/>
+                <constraint firstItem="Jnl-Ln-uIc" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="5" id="BEE-VU-hJe"/>
                 <constraint firstItem="GWL-GV-tad" firstAttribute="top" secondItem="Jnl-Ln-uIc" secondAttribute="bottom" constant="3" id="MHw-ss-ha3"/>
                 <constraint firstAttribute="trailing" secondItem="GWL-GV-tad" secondAttribute="trailing" id="W4m-85-RnG"/>
                 <constraint firstItem="GWL-GV-tad" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="ktC-tT-o3I"/>
-                <constraint firstItem="Jnl-Ln-uIc" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="15" id="lWV-Jb-l4O"/>
+                <constraint firstItem="Jnl-Ln-uIc" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="lWV-Jb-l4O"/>
             </constraints>
             <size key="customSize" width="546" height="124"/>
             <connections>
