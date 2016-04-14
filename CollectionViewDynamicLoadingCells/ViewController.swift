@@ -38,7 +38,6 @@ class ViewController: UIViewController, UIScrollViewDelegate, UICollectionViewDe
     func performScrollAnimationToSection() {
         //self.browseContentView.scrollsToTop = true
         if let attributes = self.browseContentView.layoutAttributesForItemAtIndexPath(NSIndexPath(forRow: 0, inSection: 0)) {
-            //self.browseContentView.scrollRectToVisible(CGRectMake(attributes.frame.origin.x, attributes.frame.origin.y - 260, attributes.frame.size.width, self.browseContentView.frame.size.height) , animated: true)
             self.browseContentView.scrollRectToVisible(CGRectMake(attributes.frame.origin.x, attributes.frame.origin.y - 210, attributes.frame.size.width, self.browseContentView.frame.size.height) , animated: false)
             self.categoryTitleLabel.text = MyNetwork.instance().categories[MyNetwork.instance().currentSection].title
             if !self.fullLoadComplete() {
@@ -51,16 +50,22 @@ class ViewController: UIViewController, UIScrollViewDelegate, UICollectionViewDe
     }
     
     func performScrollBackAnimationToSection() {
-        if let attributes = self.browseContentView.layoutAttributesForItemAtIndexPath(NSIndexPath(forRow: MyNetwork.instance().categories[MyNetwork.instance().currentSection].rows.count - 1, inSection: 0)) {
-            self.browseContentView.scrollRectToVisible(CGRectMake(attributes.frame.origin.x, attributes.frame.origin.y, attributes.frame.size.width, 150) , animated: false)
+        //if let attributes = self.browseContentView.layoutAttributesForItemAtIndexPath(NSIndexPath(forRow: MyNetwork.instance().categories[MyNetwork.instance().currentSection].rows.count - 1, inSection: 0)) {
+            //self.browseContentView.scrollRectToVisible(CGRectMake(attributes.frame.origin.x, attributes.frame.origin.y, attributes.frame.size.width, 150) , animated: false)
+            self.browseContentView.scrollRectToVisible(CGRectMake(0, self.browseContentView.contentSize.height - (self.browseContentView.frame.size.height - self.browseContentView.frame.origin.y), self.browseContentView.frame.size.width, self.browseContentView.frame.size.height) , animated: false)
             self.categoryTitleLabel.text = MyNetwork.instance().categories[MyNetwork.instance().currentSection].title
             if !self.fullLoadComplete() {
                 self.loadMoreLabel.text = "Load \(MyNetwork.instance().categories[MyNetwork.instance().currentSection + 1].title)"
             } else {
                 self.loadMoreLabel.text = "No More Books"
             }
-        }
+        //}
         self.view.stopLoading()
+    }
+    
+    override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
+        self.performScrollBackAnimationToSection()
+        self.browseContentView.removeObserver(self, forKeyPath: "contentSize")
     }
 
     override func viewDidLoad() {
@@ -182,7 +187,8 @@ class ViewController: UIViewController, UIScrollViewDelegate, UICollectionViewDe
             self.yForCollectionView.constant = 0
             self.browseContentView.reloadData()
             if self.prevRow > MyNetwork.instance().currentSection {
-                self.performScrollBackAnimationToSection()
+                self.browseContentView.addObserver(self, forKeyPath: "contentSize", options: NSKeyValueObservingOptions.New, context: nil)
+                //self.performScrollBackAnimationToSection()
             } else {
                 self.performScrollAnimationToSection()
             }
@@ -195,6 +201,16 @@ class ViewController: UIViewController, UIScrollViewDelegate, UICollectionViewDe
             })
             self.counter.text = "\(current.rows.count)"
             self.counter.text = "MAX"
+                
+                if !self.fullLoadComplete() {
+                    self.loadMoreLabel.text = "Load \(MyNetwork.instance().categories[MyNetwork.instance().currentSection + 1].title)"
+                    if MyNetwork.instance().currentSection > 0 {
+                        self.scrollUpLabel.text = "Load \(MyNetwork.instance().categories[MyNetwork.instance().currentSection - 1].title)"
+                    }
+                } else {
+                    self.scrollUpLabel.text = "Load \(MyNetwork.instance().categories[MyNetwork.instance().currentSection - 1].title)"
+                    self.loadMoreLabel.text = "No More Books"
+                }
             })
         } else {
         
@@ -210,7 +226,11 @@ class ViewController: UIViewController, UIScrollViewDelegate, UICollectionViewDe
                 
                 if !self.fullLoadComplete() {
                     self.loadMoreLabel.text = "Load \(MyNetwork.instance().categories[MyNetwork.instance().currentSection + 1].title)"
+                    if MyNetwork.instance().currentSection > 0 {
+                        self.scrollUpLabel.text = "Load \(MyNetwork.instance().categories[MyNetwork.instance().currentSection - 1].title)"
+                    }
                 } else {
+                    self.scrollUpLabel.text = "Load \(MyNetwork.instance().categories[MyNetwork.instance().currentSection - 1].title)"
                     self.loadMoreLabel.text = "No More Books"
                 }
                 self.loadMoreLabel.alpha = 0.0
@@ -224,7 +244,7 @@ class ViewController: UIViewController, UIScrollViewDelegate, UICollectionViewDe
                 } else {
                      self.browseContentView.reloadData()
                     if self.prevRow > MyNetwork.instance().currentSection {
-                        //self.performScrollBackAnimationToSection()
+                        self.performScrollBackAnimationToSection()
                     } else {
                         self.performScrollAnimationToSection()
                     }
@@ -293,9 +313,9 @@ class ViewController: UIViewController, UIScrollViewDelegate, UICollectionViewDe
     }
     
     func getBackToNormal(completion:()->()) {
-        if self.prevRow > MyNetwork.instance().currentSection {
-            self.performScrollBackAnimationToSection()
-        }
+//        if self.prevRow > MyNetwork.instance().currentSection {
+//            self.performScrollBackAnimationToSection()
+//        }
         UIView.animateWithDuration(0.2, animations: { () -> Void in
             //self.view.layoutIfNeeded() // Animate from constraints
             self.browseContentView.alpha = 1.0
@@ -375,8 +395,8 @@ extension ViewController {
                 headerView.sectionTitle.text = MyNetwork.instance().categories[MyNetwork.instance().currentSection].title
                 headerView.image.image = UIImage(named: self.imagesArray[MyNetwork.instance().currentSection])
 
-                headerView.widthForimage.constant = headerView.frame.size.width + 100
-                headerView.heightForimage.constant = headerView.frame.size.height + 100
+                headerView.widthForimage.constant = headerView.frame.size.width + 120
+                headerView.heightForimage.constant = headerView.frame.size.height + 120
                 if !self.scrollingToSection {
                     //self.categorySelector.selectedSegmentIndex = indexPath.section
                     //self.categoryTitleLabel.text = self.availableCategories[indexPath.section]
