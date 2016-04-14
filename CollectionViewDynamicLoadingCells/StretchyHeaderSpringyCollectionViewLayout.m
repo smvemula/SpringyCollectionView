@@ -215,7 +215,7 @@
     
     id layoutAttributes = [[_animator layoutAttributesForCellAtIndexPath:indexPath] copy];
     if (!layoutAttributes)
-        layoutAttributes = [[super layoutAttributesForItemAtIndexPath:indexPath] copy];
+        layoutAttributes = [super layoutAttributesForItemAtIndexPath:indexPath];
     return layoutAttributes;
 }
 

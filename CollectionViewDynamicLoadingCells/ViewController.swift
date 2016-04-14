@@ -16,6 +16,8 @@ class ViewController: UIViewController, UIScrollViewDelegate, UICollectionViewDe
     @IBOutlet var counter: UILabel!
     @IBOutlet var topLayoutForLabel: NSLayoutConstraint!
     @IBOutlet var bottomLayoutForLabel: NSLayoutConstraint!
+    @IBOutlet var yForCollectionView: NSLayoutConstraint!
+    @IBOutlet var heightForCollectionView: NSLayoutConstraint!
     @IBOutlet var categoryTitleLabel: UILabel!
     @IBOutlet var spinner: UIActivityIndicatorView!
     @IBOutlet var categorySelector: UISegmentedControl!
@@ -35,11 +37,10 @@ class ViewController: UIViewController, UIScrollViewDelegate, UICollectionViewDe
     
     func performScrollAnimationToSection() {
         //self.browseContentView.scrollsToTop = true
-        if let attributes = self.browseContentView.layoutAttributesForItemAtIndexPath(NSIndexPath(forRow: 0, inSection: self.categorySelector.selectedSegmentIndex)) {
+        if let attributes = self.browseContentView.layoutAttributesForItemAtIndexPath(NSIndexPath(forRow: 0, inSection: 0)) {
             //self.browseContentView.scrollRectToVisible(CGRectMake(attributes.frame.origin.x, attributes.frame.origin.y - 260, attributes.frame.size.width, self.browseContentView.frame.size.height) , animated: true)
             self.browseContentView.scrollRectToVisible(CGRectMake(attributes.frame.origin.x, attributes.frame.origin.y - 210, attributes.frame.size.width, self.browseContentView.frame.size.height) , animated: false)
             self.categoryTitleLabel.text = MyNetwork.instance().categories[MyNetwork.instance().currentSection].title
-            self.browseContentView.userInteractionEnabled = true
             if !self.fullLoadComplete() {
                 self.loadMoreLabel.text = "Load \(MyNetwork.instance().categories[MyNetwork.instance().currentSection + 1].title)"
             } else {
@@ -50,26 +51,23 @@ class ViewController: UIViewController, UIScrollViewDelegate, UICollectionViewDe
     }
     
     func performScrollBackAnimationToSection() {
-        if let attributes = self.browseContentView.layoutAttributesForItemAtIndexPath(NSIndexPath(forRow: MyNetwork.instance().categories[MyNetwork.instance().currentSection].rows.count - 1, inSection: self.categorySelector.selectedSegmentIndex)) {
-            //self.browseContentView.scrollRectToVisible(CGRectMake(attributes.frame.origin.x, attributes.frame.origin.y - 260, attributes.frame.size.width, self.browseContentView.frame.size.height) , animated: true)
-            self.browseContentView.scrollRectToVisible(CGRectMake(attributes.frame.origin.x, attributes.frame.origin.y, attributes.frame.size.width, 150) , animated: true)
+        if let attributes = self.browseContentView.layoutAttributesForItemAtIndexPath(NSIndexPath(forRow: MyNetwork.instance().categories[MyNetwork.instance().currentSection].rows.count - 1, inSection: 0)) {
+            self.browseContentView.scrollRectToVisible(CGRectMake(attributes.frame.origin.x, attributes.frame.origin.y, attributes.frame.size.width, 150) , animated: false)
             self.categoryTitleLabel.text = MyNetwork.instance().categories[MyNetwork.instance().currentSection].title
-            self.browseContentView.userInteractionEnabled = true
             if !self.fullLoadComplete() {
                 self.loadMoreLabel.text = "Load \(MyNetwork.instance().categories[MyNetwork.instance().currentSection + 1].title)"
             } else {
                 self.loadMoreLabel.text = "No More Books"
             }
         }
-        UIView.animateWithDuration(0.2, delay: 0.0, options: UIViewAnimationOptions.CurveEaseIn, animations: {
-            self.browseContentView.alpha = 1.0
-            }, completion: nil)
         self.view.stopLoading()
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        self.heightForCollectionView.constant = self.view.frame.size.height - 20
         
         // Create a new instance of our stretchy layout and set the
         // default size for our header (for when it's not stretched)
@@ -80,7 +78,7 @@ class ViewController: UIViewController, UIScrollViewDelegate, UICollectionViewDe
         stretchyLayout.scrollDirection = UICollectionViewScrollDirection.Vertical
         
         // Set our custom layout & insets
-        //self.browseContentView.collectionViewLayout = stretchyLayout
+        self.browseContentView.collectionViewLayout = stretchyLayout
         
         self.browseContentView.decelerationRate = UIScrollViewDecelerationRateFast
 
@@ -112,14 +110,14 @@ class ViewController: UIViewController, UIScrollViewDelegate, UICollectionViewDe
                         var indexPathsToLoad = [NSIndexPath]()
                         if current.currentIndex != current.nextIndex {
                             for index in current.currentIndex...current.rows.count - 1 {
-                                indexPathsToLoad.append(NSIndexPath(forRow: index, inSection: section))
+                                indexPathsToLoad.append(NSIndexPath(forRow: index, inSection: 0))
                             }
                             current.currentIndex = current.rows.count
                         } else if current.currentIndex < current.rows.count - 1 {
                             current.currentIndex += 1
-                            indexPathsToLoad.append(NSIndexPath(forRow: current.currentIndex, inSection: section))
+                            indexPathsToLoad.append(NSIndexPath(forRow: current.currentIndex, inSection: 0))
                         } else if current.currentIndex == current.rows.count - 1 {
-                            indexPathsToLoad.append(NSIndexPath(forRow: current.currentIndex, inSection: section))
+                            indexPathsToLoad.append(NSIndexPath(forRow: current.currentIndex, inSection: 0))
                         }
                         if indexPathsToLoad.count > 0 && MyNetwork.instance().currentSection == section {
                             self.browseContentView.insertItemsAtIndexPaths(indexPathsToLoad)
@@ -179,78 +177,25 @@ class ViewController: UIViewController, UIScrollViewDelegate, UICollectionViewDe
         
         let current = MyNetwork.instance().categories[MyNetwork.instance().currentSection]
         if current.fetchedAllRows {
-            dispatch_async(dispatch_get_main_queue(), {
                 //self.scrollingToSection = true
+            self.view.stopLoading()
+            self.yForCollectionView.constant = 0
+            self.browseContentView.reloadData()
+            if self.prevRow > MyNetwork.instance().currentSection {
+                self.performScrollBackAnimationToSection()
+            } else {
+                self.performScrollAnimationToSection()
+            }
+            dispatch_async(dispatch_get_main_queue(), {
+            self.scrollingToSection = true
+            self.categorySelector.selectedSegmentIndex = MyNetwork.instance().currentSection
+            self.getBackToNormal({
                 self.view.stopLoading()
                 self.browseContentView.userInteractionEnabled = true
-                var sections = NSIndexSet()
-                sections = NSIndexSet(indexesInRange: NSMakeRange(MyNetwork.instance().currentSection, 1))
-                self.browseContentView.performBatchUpdates({
-                    /*if MyNetwork.instance().currentSection > 1 {
-                     var indexPaths = [NSIndexPath]()
-                     for index in 0...MyNetwork.instance().categories[self.prevRow].rows.count - 1 {
-                     indexPaths.append(NSIndexPath(forRow: index, inSection: 0))
-                     }
-                     self.browseContentView.reloadItemsAtIndexPaths(indexPaths)
-                     }*/
-                    //self.browseContentView.deleteSections(sections)
-                    //self.browseContentView.insertSections(sections)
-                    UIView.animateWithDuration(0.1, delay: 0.0, options: UIViewAnimationOptions.CurveEaseIn, animations: {
-                        self.browseContentView.alpha = self.prevRow > MyNetwork.instance().currentSection ? 0.0 : 1.0
-                        }, completion: nil)
-                    
-                    self.browseContentView.reloadSections(sections)
-
-                    //self.browseContentView.reloadData()
-                    
-                    }, completion: { completed in
-                        dispatch_async(dispatch_get_main_queue(), {
-                            self.scrollingToSection = true
-                            self.categorySelector.selectedSegmentIndex = MyNetwork.instance().currentSection
-                            
-                            var sections = NSIndexSet()
-                            sections = NSIndexSet(indexesInRange: NSMakeRange(self.prevRow, 1))
-                            
-                            if self.prevRow > MyNetwork.instance().currentSection {
-                                self.prevRow = 100
-                                self.browseContentView.reloadSections(sections)
-                                self.performScrollBackAnimationToSection()
-                            } else {
-                                self.prevRow = 100
-                                self.browseContentView.reloadSections(sections)
-                                self.performScrollAnimationToSection()
-                            }
-                            
-                            self.counter.text = "MAX"
-                            
-                        })
-                        
-                        
-                        /*var indexPaths = [NSIndexPath]()
-                         for index in 0...MyNetwork.instance().categories[self.prevRow].rows.count {
-                         indexPaths.append(NSIndexPath(forRow: index, inSection: self.prevRow))
-                         }
-                         self.prevRow = 100
-                         self.browseContentView.deleteItemsAtIndexPaths(indexPaths)*/
-                        
-                        
-                })
             })
-            /*
-            dispatch_async(dispatch_get_main_queue(), {
-                self.browseContentView.userInteractionEnabled = true
-                //self.scrollingToSection = true
-                self.categorySelector.selectedSegmentIndex = MyNetwork.instance().currentSection
-                //self.performScrollAnimationToSection()
-                UIView.animateWithDuration(2.0, delay: 0.0, options: UIViewAnimationOptions.CurveEaseIn, animations: {
-                    self.browseContentView.reloadData()
-                    }, completion: { completed in
-                        self.view.stopLoading()
-                        self.performScrollAnimationToSection()
-                        //self.getMoreRowsIn(MyNetwork.instance().currentSection)
-                        //self.counter.text = "\(current.rows.count)"
-                })
-            })*/
+            self.counter.text = "\(current.rows.count)"
+            self.counter.text = "MAX"
+            })
         } else {
         
         MyAPIs.getData(MyNetwork.instance().currentSection, completion: {
@@ -271,91 +216,31 @@ class ViewController: UIViewController, UIScrollViewDelegate, UICollectionViewDe
                 self.loadMoreLabel.alpha = 0.0
                 
                 self.spinner.stopAnimating()
-                
-                self.view.stopLoading()
-                self.browseContentView.userInteractionEnabled = true
+                self.yForCollectionView.constant = 0
                 if MyNetwork.instance().currentSection == 0 {
                     self.updateCategorySelector()
                     self.browseContentView.reloadData()
                     self.getMoreRowsIn(MyNetwork.instance().currentSection)
                 } else {
+                     self.browseContentView.reloadData()
+                    if self.prevRow > MyNetwork.instance().currentSection {
+                        //self.performScrollBackAnimationToSection()
+                    } else {
+                        self.performScrollAnimationToSection()
+                    }
                     dispatch_async(dispatch_get_main_queue(), {
-                        //self.scrollingToSection = true
-                        
-                        var sections = NSIndexSet()
-                        sections = NSIndexSet(indexesInRange: NSMakeRange(MyNetwork.instance().currentSection, 1))
-                        self.browseContentView.performBatchUpdates({
-                            /*if MyNetwork.instance().currentSection > 1 {
-                                var indexPaths = [NSIndexPath]()
-                                for index in 0...MyNetwork.instance().categories[self.prevRow].rows.count - 1 {
-                                    indexPaths.append(NSIndexPath(forRow: index, inSection: 0))
-                                }
-                                self.browseContentView.reloadItemsAtIndexPaths(indexPaths)
-                            }*/
-                            //self.browseContentView.deleteSections(sections)
-                            //self.browseContentView.insertSections(sections)
-                            self.browseContentView.reloadSections(sections)
-                            //self.browseContentView.reloadData()
-                            
-                            }, completion: { completed in
-                                dispatch_async(dispatch_get_main_queue(), {
-                                    self.scrollingToSection = true
-                                    self.categorySelector.selectedSegmentIndex = MyNetwork.instance().currentSection
-                                    self.performScrollAnimationToSection()
-                                    self.counter.text = "\(current.rows.count)"
-                                })
-                                self.getMoreRowsIn(MyNetwork.instance().currentSection)
-                                
-                               
-                                /*var indexPaths = [NSIndexPath]()
-                                for index in 0...MyNetwork.instance().categories[self.prevRow].rows.count {
-                                    indexPaths.append(NSIndexPath(forRow: index, inSection: self.prevRow))
-                                }
-                                 self.prevRow = 100
-                                self.browseContentView.deleteItemsAtIndexPaths(indexPaths)*/
-                                
-                                var sections = NSIndexSet()
-                                sections = NSIndexSet(indexesInRange: NSMakeRange(self.prevRow, 1))
-                                self.prevRow = 100
-                                self.browseContentView.reloadSections(sections)
+                        self.scrollingToSection = true
+                        self.categorySelector.selectedSegmentIndex = MyNetwork.instance().currentSection
+                        self.getBackToNormal({
+                            self.view.stopLoading()
+                            self.browseContentView.userInteractionEnabled = true
                         })
+                        self.counter.text = "\(current.rows.count)"
                     })
-                    
-                    /*
-                    let sections = NSIndexSet(indexesInRange: NSMakeRange(MyNetwork.instance().currentSection - 1, 2))
-                    self.browseContentView.performBatchUpdates({
-                        if MyNetwork.instance().currentSection > 1 {
-                            //self.browseContentView.reloadItemsAtIndexPaths([NSIndexPath(forRow: MyNetwork.instance().categories[MyNetwork.instance().currentSection - 1].rows.count, inSection: MyNetwork.instance().currentSection - 1)])
-                        }
-                        self.browseContentView.reloadSections(sections)
-                        
-                        }, completion: { completed in
-                            dispatch_async(dispatch_get_main_queue(), {
-                                self.scrollingToSection = true
-                                self.categorySelector.selectedSegmentIndex = MyNetwork.instance().currentSection
-                                self.performScrollAnimationToSection()
-                                self.counter.text = "\(current.rows.count)"
-                            })
-                            self.getMoreRowsIn(MyNetwork.instance().currentSection)
-                    })*/
+                    self.getMoreRowsIn(MyNetwork.instance().currentSection)
                 }
             })
         })
-        /*
-        if self.categories.contains(self.availableCategories[section]) {
-            block()
-        } else {
-            let sections = NSIndexSet(indexesInRange: NSMakeRange(self.categories.count, section - self.categories.count + 1))
-            for index in self.categories.count...section {
-                self.categories.append(self.availableCategories[index])
-                self.dataRows[self.categories.last!] = newArray
-            }
-            self.browseContentView.performBatchUpdates({
-                self.browseContentView.insertSections(sections)
-                }, completion: { completed in
-                    block()
-            })
-        }*/
         }
     }
     
@@ -367,8 +252,6 @@ class ViewController: UIViewController, UIScrollViewDelegate, UICollectionViewDe
         self.scrollUpLabel.alpha = 0.0
             //if self.reachedEndOfSection() {self.spinner.startAnimating()}
 
-            
-            self.browseContentView.userInteractionEnabled = false
             if let isJump = section {
                 MyNetwork.instance().currentSection = isJump
                 
@@ -382,28 +265,68 @@ class ViewController: UIViewController, UIScrollViewDelegate, UICollectionViewDe
                 }
             } else {
                 
-                self.view.startLoading()
+                prevRow = MyNetwork.instance().currentSection
+                self.browseContentView.userInteractionEnabled = false
                 
+                if isdownScroll {
+                    MyNetwork.instance().currentSection += 1
+                    self.scrollDownAnimation({
+                        self.view.startLoading()
+                        self.scrollingToSection = true
+                        self.loadSection({})
+                    })
+                } else {
+                    MyNetwork.instance().currentSection -= 1
+                    self.scrollUpAnimation({
+                        self.view.startLoading()
+                        self.scrollingToSection = true
+                        self.loadSection({})
+                    })
+                }
                 if !self.fullLoadComplete() {
                     print( self.reachedEndOfSection() ? "Loading NEXT Category" : "Loading more rows in \(MyNetwork.instance().categories.last!)")
                     self.loadMoreLabel.text = self.reachedEndOfSection() ? "Loading \(MyNetwork.instance().categories[MyNetwork.instance().currentSection + 1].title) ..." : "Loading More Books ..."
                 }
-                
-                prevRow = MyNetwork.instance().currentSection
-                
-                if isdownScroll {
-                    MyNetwork.instance().currentSection += 1
-                } else {
-                     MyNetwork.instance().currentSection -= 1
-                }
-                
-                self.scrollingToSection = true
-                self.loadSection({})
-                
             }
-            
+        
         //}
     }
+    
+    func getBackToNormal(completion:()->()) {
+        if self.prevRow > MyNetwork.instance().currentSection {
+            self.performScrollBackAnimationToSection()
+        }
+        UIView.animateWithDuration(0.2, animations: { () -> Void in
+            //self.view.layoutIfNeeded() // Animate from constraints
+            self.browseContentView.alpha = 1.0
+            
+            }, completion: { (finished:Bool) -> Void in
+                completion()
+        })
+    }
+    
+    func scrollUpAnimation(completion: ()-> ()) {
+        self.yForCollectionView.constant = self.view.frame.size.height
+        UIView.animateWithDuration(0.5,
+                                   animations: { () -> Void in
+            self.view.layoutIfNeeded() // Animate from constraints
+            self.browseContentView.alpha = 0.0
+            }, completion: { (finished:Bool) -> Void in
+                completion()
+        })
+    }
+    
+    func scrollDownAnimation(completion: ()-> ()) {
+        self.yForCollectionView.constant = -self.view.frame.size.height
+        UIView.animateWithDuration(0.5, animations: { () -> Void in
+            self.view.layoutIfNeeded() // Animate from constraints
+            }, completion: { (finished:Bool) -> Void in
+                self.browseContentView.alpha = 0.0
+                completion()
+        })
+    }
+    
+    var shouldLoadUp : Bool?
 
 }
 
@@ -437,7 +360,8 @@ extension ViewController {
         }
         
         
-        let category =  MyNetwork.instance().categories[indexPath.section]
+        //let category =  MyNetwork.instance().categories[indexPath.section]
+        let category =  MyNetwork.instance().categories[MyNetwork.instance().currentSection]
         cell?.row = category.rows[indexPath.row]
         
         return cell!
@@ -446,10 +370,13 @@ extension ViewController {
     func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
         if kind == UICollectionElementKindSectionHeader {
             if let headerView = self.browseContentView.dequeueReusableSupplementaryViewOfKind(UICollectionElementKindSectionHeader, withReuseIdentifier: "section", forIndexPath: indexPath) as? CategoryHeaderView {
-                headerView.sectionTitle.text = MyNetwork.instance().categories[indexPath.section].title
-                headerView.image.image = UIImage(named: self.imagesArray[indexPath.section])
-                headerView.widthForimage.constant = headerView.frame.size.width
-                headerView.heightForimage.constant = headerView.frame.size.height
+//                headerView.sectionTitle.text = MyNetwork.instance().categories[indexPath.section].title
+//                headerView.image.image = UIImage(named: self.imagesArray[indexPath.section])
+                headerView.sectionTitle.text = MyNetwork.instance().categories[MyNetwork.instance().currentSection].title
+                headerView.image.image = UIImage(named: self.imagesArray[MyNetwork.instance().currentSection])
+
+                headerView.widthForimage.constant = headerView.frame.size.width + 100
+                headerView.heightForimage.constant = headerView.frame.size.height + 100
                 if !self.scrollingToSection {
                     //self.categorySelector.selectedSegmentIndex = indexPath.section
                     //self.categoryTitleLabel.text = self.availableCategories[indexPath.section]
@@ -465,38 +392,52 @@ extension ViewController {
         // that -16 is because I have 8px for left and right spacing constraints for the label.
         // Set some extra pixels for height due to the margins of the header section.
         //This value should be the sum of the vertical spacing you set in the autolayout constraints for the label. + 16 worked for me as I have 8px for top and bottom constraints.
-        if MyNetwork.instance().currentSection == section || section == self.prevRow { //MyNetwork.instance().categories[section].rows.count > 0  {
+        /*if MyNetwork.instance().currentSection == section || section == self.prevRow { //MyNetwork.instance().categories[section].rows.count > 0  {
             print("Height for this section \(section) is 200")
             return CGSize(width: collectionView.frame.width, height: 200)
         }
         print("Height for this section \(section) is 0")
-        return CGSize(width: collectionView.frame.width, height: 0)
+        return CGSize(width: collectionView.frame.width, height: 0)*/
+        
+        return CGSize(width: collectionView.frame.width, height: 200)
     }
     
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         //return MyNetwork.instance().activeCategories.count
         //return MyNetwork.instance().currentSection + 1
-        return MyNetwork.instance().categories.count
+        //return MyNetwork.instance().categories.count
+        if MyNetwork.instance().categories.count > 0 {
+        return 1
+        }
+        return 0
     }
     
     
     func collectionView(collectionView : UICollectionView,layout  collectionViewLayout:UICollectionViewLayout,sizeForItemAtIndexPath indexPath:NSIndexPath) -> CGSize {
-        if (MyNetwork.instance().currentSection == indexPath.section || indexPath.section == self.prevRow)  {
+        /*if (MyNetwork.instance().currentSection == indexPath.section || indexPath.section == self.prevRow)  {
             if indexPath.row == MyNetwork.instance().categories[indexPath.section].rows.count && indexPath.section == MyNetwork.instance().currentSection {
                 return CGSizeMake(self.browseContentView.frame.size.width, 40)
             } else if indexPath.row < MyNetwork.instance().categories[indexPath.section].rows.count {
                 return CGSizeMake(self.browseContentView.frame.size.width, 150)
             }
         }
-        return CGSizeMake(self.browseContentView.frame.size.width, 0)
+         
+         return CGSizeMake(self.browseContentView.frame.size.width, 0)
+         */
+        
+        return CGSizeMake(self.browseContentView.frame.size.width, 150)
     }
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         collectionView.deselectItemAtIndexPath(indexPath, animated: true)
     }
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if MyNetwork.instance().categories.count > 0 && (MyNetwork.instance().currentSection == section || section == self.prevRow) {
+        /*if MyNetwork.instance().categories.count > 0 && (MyNetwork.instance().currentSection == section || section == self.prevRow) {
             return MyNetwork.instance().categories[section].rows.count
+        }*/
+        
+        if MyNetwork.instance().categories.count > 0 {
+            return MyNetwork.instance().categories[MyNetwork.instance().currentSection].rows.count
         }
         
         return 0
@@ -553,13 +494,15 @@ extension ViewController {
         
         //print("target offset \(targetContentOffset.memory.y), contentOffset: \(scrollView.contentOffset.y)")
         if scrollView.contentOffset.y <= -100 && targetContentOffset.memory.y == 0 && MyNetwork.instance().currentSection != 0 {
-            self.loadNewData(false, section: nil)
-            self.topLayoutForLabel.constant = -20
+            //self.loadNewData(false, section: nil)
+            self.shouldLoadUp = false
+            self.topLayoutForLabel.constant = 200
             //didUpdateConstraint = true
         } else /*if targetContentOffset.memory.y > scrollView.contentOffset.y && !self.reachedEndOfSection {
             //self.loadNewData()
         } else*/ if targetContentOffset.memory.y == scrollView.contentSize.height - scrollView.frame.size.height && targetContentOffset.memory.y + 100 <= scrollView.contentOffset.y && self.reachedEndOfSection() && !self.fullLoadComplete() {
-            self.loadNewData(true, section: nil)
+            //self.loadNewData(true, section: nil)
+            self.shouldLoadUp = true
             self.bottomLayoutForLabel.constant = -20
         } else {
             //This is the index of the "page" that we will be landing at
@@ -592,14 +535,14 @@ extension ViewController {
         
         if scrollView.contentOffset.y < 0 && MyNetwork.instance().currentSection != 0 {
             let multiplier = (scrollView.contentOffset.y*(-1))/100
-            self.scrollUpLabel.font = UIFont.boldSystemFontOfSize(12 + 3*multiplier)
+            self.scrollUpLabel.font = UIFont.boldSystemFontOfSize(5 + 10*multiplier)
             self.scrollUpLabel.alpha = 1.0*multiplier
-            self.topLayoutForLabel.constant = -20 + 50*multiplier
+            self.topLayoutForLabel.constant = 200 + 50*multiplier
         }
     
         if self.reachedEndOfSection() {
             let multiplier = (scrollView.contentOffset.y - (scrollView.contentSize.height - scrollView.frame.size.height))/100
-            self.loadMoreLabel.font = UIFont.boldSystemFontOfSize(12 + 3*multiplier)
+            self.loadMoreLabel.font = UIFont.boldSystemFontOfSize(5 + 10*multiplier)
             self.loadMoreLabel.alpha = 1.0*multiplier
             self.bottomLayoutForLabel.constant = -20 + 50*multiplier
         }
@@ -613,6 +556,11 @@ extension ViewController {
                 }, completion: nil)
             self.spinner.startAnimating()
         }*/
+        
+        if let doExists = self.shouldLoadUp {
+            self.loadNewData(doExists, section: nil)
+            self.shouldLoadUp = nil
+        }
         
     }
     
