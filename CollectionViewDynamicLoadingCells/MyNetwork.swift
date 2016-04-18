@@ -23,7 +23,7 @@ public class MyNetwork:NSObject, NSURLSessionDataDelegate {
     var activeCategories = [Category]()
     var nextIndex = 0
     var Rows = [String: [Book]]()
-    var currentSection = 0
+    //var currentSection = 0
     
     required public override init() {
         super.init()
