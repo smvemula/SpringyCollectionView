@@ -11,6 +11,4 @@ import UIKit
 class CategoryHeaderView: UICollectionReusableView {
     @IBOutlet var sectionTitle: UILabel!
     @IBOutlet var image: UIImageView!
-    @IBOutlet var widthForimage: NSLayoutConstraint!
-    @IBOutlet var heightForimage: NSLayoutConstraint!
 }

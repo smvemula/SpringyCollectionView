@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="ContiguousScrollContentView" customModule="CollectionViewDynamicLoadingCells" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="f1e-Kp-NYA">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="600" id="zVQ-ED-n6g"/>
+                    </constraints>
+                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="8OQ-IT-uqQ">
+                        <size key="itemSize" width="50" height="50"/>
+                        <size key="headerReferenceSize" width="50" height="50"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="50" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                    <connections>
+                        <outlet property="dataSource" destination="iN0-l3-epB" id="zvF-Z1-gsX"/>
+                        <outlet property="delegate" destination="iN0-l3-epB" id="NLH-su-xH8"/>
+                    </connections>
+                </collectionView>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="NMz-ne-tD0">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="600" id="b4B-7B-J3X"/>
+                    </constraints>
+                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="XEV-Li-iYf">
+                        <size key="itemSize" width="50" height="50"/>
+                        <size key="headerReferenceSize" width="50" height="50"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="50" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="b4B-7B-J3X"/>
+                        </mask>
+                    </variation>
+                    <connections>
+                        <outlet property="dataSource" destination="iN0-l3-epB" id="eHH-fF-KeF"/>
+                        <outlet property="delegate" destination="iN0-l3-epB" id="LSH-hh-ePo"/>
+                    </connections>
+                </collectionView>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="l85-QZ-jTc">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="600" id="Wiw-qe-UiZ"/>
+                    </constraints>
+                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="3Vc-V8-IpL">
+                        <size key="itemSize" width="50" height="50"/>
+                        <size key="headerReferenceSize" width="50" height="50"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="50" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="Wiw-qe-UiZ"/>
+                        </mask>
+                    </variation>
+                    <connections>
+                        <outlet property="dataSource" destination="iN0-l3-epB" id="sS9-Kv-45z"/>
+                        <outlet property="delegate" destination="iN0-l3-epB" id="gCO-tp-H4r"/>
+                    </connections>
+                </collectionView>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="NMz-ne-tD0" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="5bw-z8-h0r"/>
+                <constraint firstItem="l85-QZ-jTc" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Evg-i7-tSQ"/>
+                <constraint firstItem="l85-QZ-jTc" firstAttribute="height" secondItem="f1e-Kp-NYA" secondAttribute="height" id="JWR-gA-SNt"/>
+                <constraint firstItem="NMz-ne-tD0" firstAttribute="height" secondItem="f1e-Kp-NYA" secondAttribute="height" id="JyB-2C-d7Z"/>
+                <constraint firstItem="f1e-Kp-NYA" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Q2e-Ha-XvW"/>
+                <constraint firstItem="f1e-Kp-NYA" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="QPN-Oe-sPL"/>
+                <constraint firstItem="l85-QZ-jTc" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="RQn-zU-278"/>
+                <constraint firstAttribute="trailing" secondItem="f1e-Kp-NYA" secondAttribute="trailing" id="aaK-7F-wjw"/>
+                <constraint firstAttribute="trailing" secondItem="l85-QZ-jTc" secondAttribute="trailing" id="ccz-jm-iC1"/>
+                <constraint firstItem="NMz-ne-tD0" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="e8X-jQ-qFp"/>
+                <constraint firstAttribute="trailing" secondItem="NMz-ne-tD0" secondAttribute="trailing" id="vJp-tI-D3v"/>
+            </constraints>
+            <connections>
+                <outlet property="CV1" destination="f1e-Kp-NYA" id="0Pd-Xn-0nH"/>
+                <outlet property="CV2" destination="NMz-ne-tD0" id="CoH-ch-Z8C"/>
+                <outlet property="CV3" destination="l85-QZ-jTc" id="FNI-nf-hmr"/>
+                <outlet property="heightForCV1" destination="zVQ-ED-n6g" id="mqb-G3-NqN"/>
+                <outlet property="yForCV1" destination="Q2e-Ha-XvW" id="rjO-mi-jeP"/>
+                <outlet property="yForCV2" destination="5bw-z8-h0r" id="WCc-p9-CCf"/>
+                <outlet property="yForCV3" destination="Evg-i7-tSQ" id="zR2-mF-rMw"/>
+            </connections>
+        </view>
+    </objects>
+</document>

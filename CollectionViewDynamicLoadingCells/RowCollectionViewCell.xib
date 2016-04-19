@@ -16,7 +16,7 @@
                     <collectionView opaque="NO" multipleTouchEnabled="YES" contentMode="scaleToFill" directionalLockEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" indicatorStyle="white" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="GWL-GV-tad">
                         <rect key="frame" x="0.0" y="29" width="1000" height="266"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                        <inset key="scrollIndicatorInsets" minX="0.0" minY="50" maxX="50" maxY="50"/>
+                        <inset key="scrollIndicatorInsets" minX="50" minY="50" maxX="50" maxY="50"/>
                         <collectionViewLayout key="collectionViewLayout" id="BX9-cQ-Jay" customClass="THSpringyFlowLayout"/>
                         <connections>
                             <outlet property="dataSource" destination="gTV-IL-0wX" id="xpA-ge-fwM"/>

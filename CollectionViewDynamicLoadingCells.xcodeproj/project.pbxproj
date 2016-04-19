@@ -26,6 +26,9 @@
 		91790E951CAF2DD3009EFFFE /* BookCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91790E931CAF2DD3009EFFFE /* BookCVCell.swift */; };
 		91790E961CAF2DD3009EFFFE /* BookCVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91790E941CAF2DD3009EFFFE /* BookCVCell.xib */; };
 		91790E981CAF4AC5009EFFFE /* CategoryHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91790E971CAF4AC5009EFFFE /* CategoryHeaderView.swift */; };
+		91AA33B71CC6F1AE00F4BEB7 /* ContiguousScrollContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91AA33B61CC6F1AE00F4BEB7 /* ContiguousScrollContentView.swift */; };
+		91AA33B91CC6F1DB00F4BEB7 /* ContiguousScrollContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91AA33B81CC6F1DB00F4BEB7 /* ContiguousScrollContentView.xib */; };
+		91AA33BB1CC6FA8C00F4BEB7 /* CategoryHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91AA33BA1CC6FA8C00F4BEB7 /* CategoryHeaderView.xib */; };
 		91D4F3ED1CAEEEAE0036D0A3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D4F3EC1CAEEEAE0036D0A3 /* AppDelegate.swift */; };
 		91D4F3EF1CAEEEAE0036D0A3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91D4F3EE1CAEEEAE0036D0A3 /* ViewController.swift */; };
 		91D4F3F21CAEEEAE0036D0A3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91D4F3F01CAEEEAE0036D0A3 /* Main.storyboard */; };
@@ -80,6 +83,9 @@
 		91790E931CAF2DD3009EFFFE /* BookCVCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookCVCell.swift; sourceTree = "<group>"; };
 		91790E941CAF2DD3009EFFFE /* BookCVCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BookCVCell.xib; sourceTree = "<group>"; };
 		91790E971CAF4AC5009EFFFE /* CategoryHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryHeaderView.swift; sourceTree = "<group>"; };
+		91AA33B61CC6F1AE00F4BEB7 /* ContiguousScrollContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContiguousScrollContentView.swift; sourceTree = "<group>"; };
+		91AA33B81CC6F1DB00F4BEB7 /* ContiguousScrollContentView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContiguousScrollContentView.xib; sourceTree = "<group>"; };
+		91AA33BA1CC6FA8C00F4BEB7 /* CategoryHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CategoryHeaderView.xib; sourceTree = "<group>"; };
 		91D4F3E91CAEEEAE0036D0A3 /* CollectionViewDynamicLoadingCells.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CollectionViewDynamicLoadingCells.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		91D4F3EC1CAEEEAE0036D0A3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		91D4F3EE1CAEEEAE0036D0A3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -147,6 +153,9 @@
 				91790E931CAF2DD3009EFFFE /* BookCVCell.swift */,
 				91790E941CAF2DD3009EFFFE /* BookCVCell.xib */,
 				91790E971CAF4AC5009EFFFE /* CategoryHeaderView.swift */,
+				91AA33BA1CC6FA8C00F4BEB7 /* CategoryHeaderView.xib */,
+				91AA33B61CC6F1AE00F4BEB7 /* ContiguousScrollContentView.swift */,
+				91AA33B81CC6F1DB00F4BEB7 /* ContiguousScrollContentView.xib */,
 			);
 			name = CustomViews/Cells;
 			sourceTree = "<group>";
@@ -347,11 +356,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				91D4F3F71CAEEEAE0036D0A3 /* LaunchScreen.storyboard in Resources */,
+				91AA33BB1CC6FA8C00F4BEB7 /* CategoryHeaderView.xib in Resources */,
 				91D4F4211CAEF7600036D0A3 /* LoadingCVCell.xib in Resources */,
 				91D4F41D1CAEF33F0036D0A3 /* RowCollectionViewCell.xib in Resources */,
 				91D4F3F41CAEEEAE0036D0A3 /* Assets.xcassets in Resources */,
 				91D4F3F21CAEEEAE0036D0A3 /* Main.storyboard in Resources */,
 				91790E961CAF2DD3009EFFFE /* BookCVCell.xib in Resources */,
+				91AA33B91CC6F1DB00F4BEB7 /* ContiguousScrollContentView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -389,6 +400,7 @@
 				91D4F4201CAEF7600036D0A3 /* LoadingCVCell.swift in Sources */,
 				91D4F3EF1CAEEEAE0036D0A3 /* ViewController.swift in Sources */,
 				9105435F1CB6F42B003CCB20 /* MyAPIs.swift in Sources */,
+				91AA33B71CC6F1AE00F4BEB7 /* ContiguousScrollContentView.swift in Sources */,
 				910543601CB6F42B003CCB20 /* MyNetwork.swift in Sources */,
 				910543701CB6F462003CCB20 /* UIViewExtension.swift in Sources */,
 				91790E951CAF2DD3009EFFFE /* BookCVCell.swift in Sources */,
