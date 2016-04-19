@@ -46,14 +46,14 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="water-cycle-image" translatesAutoresizingMaskIntoConstraints="NO" id="VM7-cD-q4D">
-                                            <rect key="frame" x="-10" y="0.0" width="600" height="200"/>
+                                            <rect key="frame" x="-10" y="15" width="600" height="200"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="200" id="ks6-Ek-og6"/>
                                                 <constraint firstAttribute="width" constant="600" id="znC-2L-Bde"/>
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recommended" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S9q-E4-K0x">
-                                            <rect key="frame" x="-2" y="0.0" width="584" height="30"/>
+                                            <rect key="frame" x="-2" y="15" width="584" height="30"/>
                                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.80000000000000004" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="30" id="cYj-QH-i6W"/>
@@ -65,18 +65,20 @@
                                     </subviews>
                                     <constraints>
                                         <constraint firstAttribute="trailingMargin" secondItem="VM7-cD-q4D" secondAttribute="trailing" constant="-8" id="909-uS-rCM"/>
-                                        <constraint firstItem="S9q-E4-K0x" firstAttribute="top" secondItem="HKP-vP-QXQ" secondAttribute="topMargin" constant="-8" id="99P-VM-bGq"/>
+                                        <constraint firstItem="S9q-E4-K0x" firstAttribute="top" secondItem="HKP-vP-QXQ" secondAttribute="topMargin" constant="7" id="99P-VM-bGq"/>
                                         <constraint firstItem="S9q-E4-K0x" firstAttribute="leading" secondItem="HKP-vP-QXQ" secondAttribute="leadingMargin" constant="-10" id="9Jo-89-JuO"/>
                                         <constraint firstItem="VM7-cD-q4D" firstAttribute="centerY" secondItem="HKP-vP-QXQ" secondAttribute="centerY" id="EpK-Zo-lwY"/>
                                         <constraint firstItem="VM7-cD-q4D" firstAttribute="centerX" secondItem="HKP-vP-QXQ" secondAttribute="centerX" id="J0G-Zw-Kw2"/>
                                         <constraint firstItem="VM7-cD-q4D" firstAttribute="leading" secondItem="HKP-vP-QXQ" secondAttribute="leadingMargin" constant="-8" id="QQM-p4-vAQ"/>
                                         <constraint firstItem="VM7-cD-q4D" firstAttribute="top" secondItem="HKP-vP-QXQ" secondAttribute="topMargin" constant="-100" id="cVR-0p-dhl"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="S9q-E4-K0x" secondAttribute="trailing" constant="-10" id="dNY-fJ-ZCK"/>
+                                        <constraint firstItem="VM7-cD-q4D" firstAttribute="top" secondItem="HKP-vP-QXQ" secondAttribute="topMargin" constant="7" id="uyi-Hj-wlI"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="VM7-cD-q4D" secondAttribute="bottom" constant="-100" id="x3L-V0-ZvL"/>
                                     </constraints>
                                     <variation key="default">
                                         <mask key="constraints">
                                             <exclude reference="909-uS-rCM"/>
+                                            <exclude reference="EpK-Zo-lwY"/>
                                             <exclude reference="QQM-p4-vAQ"/>
                                             <exclude reference="cVR-0p-dhl"/>
                                             <exclude reference="x3L-V0-ZvL"/>
@@ -127,7 +129,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="water-cycle-image" translatesAutoresizingMaskIntoConstraints="NO" id="UqQ-b2-cxC">
-                                            <rect key="frame" x="-10" y="0.0" width="600" height="200"/>
+                                            <rect key="frame" x="-10" y="8" width="600" height="200"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="200" id="mmm-JK-dFq"/>
                                                 <constraint firstAttribute="width" constant="600" id="rih-K2-Md8"/>
@@ -147,6 +149,7 @@
                                     <constraints>
                                         <constraint firstAttribute="trailingMargin" secondItem="UqQ-b2-cxC" secondAttribute="trailing" constant="-8" id="1Q5-Fg-MWu"/>
                                         <constraint firstItem="UqQ-b2-cxC" firstAttribute="top" secondItem="IDh-jd-Dcu" secondAttribute="topMargin" constant="-100" id="Atm-Uw-E8d"/>
+                                        <constraint firstItem="UqQ-b2-cxC" firstAttribute="top" secondItem="IDh-jd-Dcu" secondAttribute="topMargin" id="CQ3-NC-pQU"/>
                                         <constraint firstItem="sBy-Qh-VRd" firstAttribute="leading" secondItem="IDh-jd-Dcu" secondAttribute="leadingMargin" constant="-10" id="H2S-ws-hhk"/>
                                         <constraint firstItem="UqQ-b2-cxC" firstAttribute="leading" secondItem="IDh-jd-Dcu" secondAttribute="leadingMargin" constant="-8" id="K0Z-Vp-509"/>
                                         <constraint firstItem="UqQ-b2-cxC" firstAttribute="centerX" secondItem="IDh-jd-Dcu" secondAttribute="centerX" id="cXT-Db-3UR"/>
@@ -160,6 +163,7 @@
                                             <exclude reference="1Q5-Fg-MWu"/>
                                             <exclude reference="Atm-Uw-E8d"/>
                                             <exclude reference="K0Z-Vp-509"/>
+                                            <exclude reference="jh6-cB-Wf8"/>
                                             <exclude reference="noy-X5-4dG"/>
                                         </mask>
                                     </variation>
@@ -208,7 +212,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="water-cycle-image" translatesAutoresizingMaskIntoConstraints="NO" id="woJ-Tt-L3D">
-                                            <rect key="frame" x="-10" y="0.0" width="600" height="200"/>
+                                            <rect key="frame" x="-10" y="8" width="600" height="200"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="200" id="jga-Tw-7vd"/>
                                                 <constraint firstAttribute="width" constant="600" id="wzz-yC-TsI"/>
@@ -230,6 +234,7 @@
                                         <constraint firstAttribute="trailingMargin" secondItem="woJ-Tt-L3D" secondAttribute="trailing" constant="-8" id="AHp-Vs-iz7"/>
                                         <constraint firstItem="daT-GU-OE4" firstAttribute="leading" secondItem="3gh-Kc-Jcr" secondAttribute="leadingMargin" constant="-10" id="JvZ-XB-gH0"/>
                                         <constraint firstItem="woJ-Tt-L3D" firstAttribute="top" secondItem="3gh-Kc-Jcr" secondAttribute="topMargin" constant="-100" id="TKo-4F-G74"/>
+                                        <constraint firstItem="woJ-Tt-L3D" firstAttribute="top" secondItem="3gh-Kc-Jcr" secondAttribute="topMargin" id="VeN-fZ-gxr"/>
                                         <constraint firstItem="woJ-Tt-L3D" firstAttribute="centerX" secondItem="3gh-Kc-Jcr" secondAttribute="centerX" id="Zzk-e3-l5p"/>
                                         <constraint firstItem="woJ-Tt-L3D" firstAttribute="centerY" secondItem="3gh-Kc-Jcr" secondAttribute="centerY" id="a2S-NE-rdf"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="daT-GU-OE4" secondAttribute="trailing" constant="-10" id="dcx-5e-7bt"/>
@@ -241,6 +246,7 @@
                                             <exclude reference="5kJ-gt-gK9"/>
                                             <exclude reference="AHp-Vs-iz7"/>
                                             <exclude reference="TKo-4F-G74"/>
+                                            <exclude reference="a2S-NE-rdf"/>
                                             <exclude reference="uEq-i6-EgD"/>
                                         </mask>
                                     </variation>

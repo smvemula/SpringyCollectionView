@@ -44,29 +44,22 @@ class ViewController: UIViewController, UIScrollViewDelegate, UICollectionViewDe
     }
     
     func performScrollAnimationToSectionInCollectionView(cv: UICollectionView) {
-        //if let attributes = cv.layoutAttributesForItemAtIndexPath(NSIndexPath(forRow: 0, inSection: 0)) {
-            cv.scrollRectToVisible(CGRectMake(0, 0, cv.frame.size.width, cv.frame.size.height) , animated: false)
-            //self.categoryTitleLabel.text = MyNetwork.instance().categories[self.currentCategory].title
-            if !self.fullLoadComplete() {
-                self.loadMoreLabel.text = "Load \(MyNetwork.instance().categories[self.currentCategory + 1].title)"
-            } else {
-                self.loadMoreLabel.text = "No More Books"
-            }
-        //}
+        cv.scrollRectToVisible(CGRectMake(0, 0, cv.frame.size.width, cv.frame.size.height) , animated: false)
+        if !self.fullLoadComplete() {
+            self.loadMoreLabel.text = "Load \(MyNetwork.instance().categories[self.currentCategory + 1].title)"
+        } else {
+            self.loadMoreLabel.text = "No More Books"
+        }
         self.view.stopLoading()
     }
     
     func performScrollBackAnimationToSectionInCollectionView(cv: UICollectionView) {
-        //if let attributes = self.browseContentView.layoutAttributesForItemAtIndexPath(NSIndexPath(forRow: MyNetwork.instance().categories[self.currentCategory].rows.count - 1, inSection: 0)) {
-            //self.browseContentView.scrollRectToVisible(CGRectMake(attributes.frame.origin.x, attributes.frame.origin.y, attributes.frame.size.width, 150) , animated: false)
             cv.scrollRectToVisible(CGRectMake(0, cv.contentSize.height - (cv.frame.size.height), cv.frame.size.width, cv.frame.size.height) , animated: false)
-            //self.categoryTitleLabel.text = MyNetwork.instance().categories[self.currentCategory].title
             if !self.fullLoadComplete() {
                 self.loadMoreLabel.text = "Load \(MyNetwork.instance().categories[self.currentCategory + 1].title)"
             } else {
                 self.loadMoreLabel.text = "No More Books"
             }
-        //}
         self.view.stopLoading()
     }
     
@@ -77,26 +70,31 @@ class ViewController: UIViewController, UIScrollViewDelegate, UICollectionViewDe
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-    
-        
+
         self.addSetUpForCollectionView(self.CV1)
         self.addSetUpForCollectionView(self.CV2)
         self.addSetUpForCollectionView(self.CV3)
     }
     
+    let stretchyLayout = StretchyHeaderSpringyCollectionViewLayout()
+    let defaultLayout = UICollectionViewFlowLayout()
+    
     func addSetUpForCollectionView(cv: UICollectionView) {
         
         // Create a new instance of our stretchy layout and set the
         // default size for our header (for when it's not stretched)
-        let stretchyLayout = StretchyHeaderSpringyCollectionViewLayout()
+        
         stretchyLayout.headerReferenceSize = CGSizeMake(self.view.frame.size.width, 200)
+        defaultLayout.headerReferenceSize = CGSizeMake(self.view.frame.size.width, 200)
         //[stretchyLayout setHeaderReferenceSize:[DeviceUtil getSize:CGSizeMake(944, HEADER_HEIGHT) iPhoneSize:CGSizeMake(320, HEADER_HEIGHT_IPHONE)]];
         cv.directionalLockEnabled = false
         stretchyLayout.scrollDirection = UICollectionViewScrollDirection.Vertical
+        defaultLayout.scrollDirection = UICollectionViewScrollDirection.Vertical
         
         // Set our custom layout & insets
+        
         //cv.collectionViewLayout = stretchyLayout
+        //cv.collectionViewLayout = defaultLayout
         
         cv.decelerationRate = UIScrollViewDecelerationRateFast
         
@@ -115,33 +113,30 @@ class ViewController: UIViewController, UIScrollViewDelegate, UICollectionViewDe
             MyAPIs.getData(section, completion: {
                 if self.currentCategory == section {
                     self.getMoreRowsIn(cv, section: section)
-                } else {
-                    
                 }
-                    dispatch_async(dispatch_get_main_queue(), {
-                        var indexPathsToLoad = [NSIndexPath]()
-                        if current.currentIndex != current.nextIndex {
-                            for index in current.currentIndex...current.rows.count - 1 {
-                                indexPathsToLoad.append(NSIndexPath(forRow: index, inSection: 0))
-                            }
-                            current.currentIndex = current.rows.count
-                        } else if current.currentIndex < current.rows.count - 1 {
-                            current.currentIndex += 1
-                            indexPathsToLoad.append(NSIndexPath(forRow: current.currentIndex, inSection: 0))
-                        } else if current.currentIndex == current.rows.count - 1 {
-                            indexPathsToLoad.append(NSIndexPath(forRow: current.currentIndex, inSection: 0))
+                dispatch_async(dispatch_get_main_queue(), {
+                    var indexPathsToLoad = [NSIndexPath]()
+                    if current.currentIndex != current.nextIndex {
+                        for index in current.currentIndex...current.rows.count - 1 {
+                            indexPathsToLoad.append(NSIndexPath(forRow: index, inSection: 0))
                         }
-                        if indexPathsToLoad.count > 0 && self.currentCategory == section {
-                            cv.insertItemsAtIndexPaths(indexPathsToLoad)
-                        }
-                        if self.currentCategory == section {
-                            self.counter.text = "\(current.currentIndex)"
-                        }
-                        if current.fetchedAllRows {
-                            self.counter.text = "MAX"
-                        }
-                    })
-                //}
+                        current.currentIndex = current.rows.count
+                    } else if current.currentIndex < current.rows.count - 1 {
+                        current.currentIndex += 1
+                        indexPathsToLoad.append(NSIndexPath(forRow: current.currentIndex, inSection: 0))
+                    } else if current.currentIndex == current.rows.count - 1 {
+                        indexPathsToLoad.append(NSIndexPath(forRow: current.currentIndex, inSection: 0))
+                    }
+                    if indexPathsToLoad.count > 0 && self.currentCategory == section {
+                        cv.insertItemsAtIndexPaths(indexPathsToLoad)
+                    }
+                    if self.currentCategory == section {
+                        self.counter.text = "\(current.currentIndex)"
+                    }
+                    if current.fetchedAllRows {
+                        self.counter.text = "MAX"
+                    }
+                })
             })
         } else {
             self.loadingNewData = false
@@ -149,7 +144,6 @@ class ViewController: UIViewController, UIScrollViewDelegate, UICollectionViewDe
     }
     
     override func viewDidAppear(animated: Bool) {
-        //self.spinner.startAnimating()
         
         self.heightForCV1.constant = self.view.frame.size.height - 20
         self.yForCV1.constant = 0
@@ -173,16 +167,10 @@ class ViewController: UIViewController, UIScrollViewDelegate, UICollectionViewDe
     }
     
     func updateCategorySelector() {
-        /*self.categorySelector.removeAllSegments()
-        for (index, item) in MyNetwork.instance().categories.enumerate() {
-            self.categorySelector.insertSegmentWithTitle(item.title, atIndex: index, animated: false)
-        }
-        self.categorySelector.selectedSegmentIndex = self.currentCategory*/
         self.counter.hidden = false
         self.CV1.hidden = false
         self.CV2.hidden = false
         self.CV3.hidden = false
-        //self.categorySelector.hidden = false
     }
 
     var loadingNewData = false
@@ -215,14 +203,11 @@ class ViewController: UIViewController, UIScrollViewDelegate, UICollectionViewDe
             self.view.stopLoading()
             //self.yForCollectionView.constant = 0
             cv.reloadData()
+            self.performScrollAnimationToSectionInCollectionView(cv)
             block()
             dispatch_async(dispatch_get_main_queue(), {
             self.scrollingToSection = true
-            //self.categorySelector.selectedSegmentIndex = self.currentCategory
-            /*self.getBackToNormal(cv, completion: {
-                self.view.stopLoading()
-                self.view.userInteractionEnabled = true
-            })*/
+
             self.counter.text = "\(current.rows.count)"
             self.counter.text = "MAX"
                 
@@ -314,7 +299,7 @@ class ViewController: UIViewController, UIScrollViewDelegate, UICollectionViewDe
                     self.prevCategory = self.currentCategory - 1
                     self.scrollDownAnimation({
                         self.collectionViewStack.last!.reloadData()
-                        //self.performScrollAnimationToSectionInCollectionView(self.collectionViewStack.last!)
+                        self.performScrollAnimationToSectionInCollectionView(self.collectionViewStack.last!)
                     })
                 })
             } else {
@@ -384,7 +369,6 @@ class ViewController: UIViewController, UIScrollViewDelegate, UICollectionViewDe
         UIView.animateWithDuration(0.5,
                                    animations: { () -> Void in
             self.view.layoutIfNeeded() // Animate from constraints
-            //cv.alpha = 0.0
             }, completion: { (finished:Bool) -> Void in
                 self.view.userInteractionEnabled = true
                 self.scrollingToSection = false
@@ -593,7 +577,7 @@ extension ViewController {
         } else {
             
             var yOffset = targetContentOffset.memory.y > scrollView.contentOffset.y ? targetContentOffset.memory.y - scrollView.contentOffset.y : scrollView.contentOffset.y - targetContentOffset.memory.y
-            yOffset = targetContentOffset.memory.y > scrollView.contentOffset.y ? targetContentOffset.memory.y - yOffset*0.5 : targetContentOffset.memory.y + yOffset*0.5
+            yOffset = targetContentOffset.memory.y > scrollView.contentOffset.y ? targetContentOffset.memory.y - yOffset*0.7 : targetContentOffset.memory.y + yOffset*0.7
             
             //print("target offset \(targetContentOffset.memory.y), contentOffset: \(scrollView.contentOffset.y), NEW contentOffset: \(yOffset)")
             
@@ -608,31 +592,37 @@ extension ViewController {
     func scrollViewDidScroll(scrollView: UIScrollView) {
         //print("content offset Y: \(scrollView.contentOffset.y) alpha: \((scrollView.contentOffset.y - (scrollView.contentSize.height - scrollView.frame.size.height))/70)")
         
+        
+        if scrollView.contentOffset.y < 0 {
+            if let cv = scrollView as? UICollectionView {
+                //cv.collectionViewLayout = defaultLayout
+            }
+        } else {
+            if let cv = scrollView as? UICollectionView {
+                //cv.collectionViewLayout = stretchyLayout
+            }
+        }
         if let _ = self.prevCategory {
             if scrollView.contentOffset.y < 0 {
+                
                 let multiplier = (scrollView.contentOffset.y*(-1))/100
                 self.scrollUpLabel.font = UIFont.boldSystemFontOfSize(5 + 10*multiplier)
                 //self.scrollUpLabel.alpha = 1.0*multiplier
                 self.topLayoutForLabel.constant = 200 + 50*multiplier
                 
                 if self.collectionViewStack[0] == self.CV1 {
-                    self.yForCV1.constant = -self.view.frame.size.height - 20 + 80*multiplier
+                    self.yForCV1.constant = -self.view.frame.size.height - 20 + 70*multiplier
                 } else if self.collectionViewStack[0] == self.CV2 {
-                    self.yForCV2.constant = -self.view.frame.size.height - 20 + 80*multiplier
+                    self.yForCV2.constant = -self.view.frame.size.height - 20 + 70*multiplier
                 } else {//CV3
-                    self.yForCV3.constant = -self.view.frame.size.height - 20 + 80*multiplier
+                    self.yForCV3.constant = -self.view.frame.size.height - 20 + 70*multiplier
                 }
-                
-                /*if let _ = self.nextCategory {
-                    self.yForCV1.constant = -self.view.frame.size.height - 20 + 80*multiplier
-                } else {
-                    self.yForCV2.constant = self.yForCV1.constant + self.heightForCV1.constant + 80*multiplier
-                }*/
             }
         }
     
         if let _ = self.nextCategory {
             if self.reachedEndOfSection() {
+                
                 let multiplier = (scrollView.contentOffset.y - (scrollView.contentSize.height - scrollView.frame.size.height))/100
                 self.loadMoreLabel.font = UIFont.boldSystemFontOfSize(5 + 10*multiplier)
                 //self.loadMoreLabel.alpha = 1.0*multiplier
@@ -641,14 +631,14 @@ extension ViewController {
                 
                 if self.collectionViewStack[0] == self.CV1 {
                     if self.collectionViewStack.count == 2 {
-                        self.yForCV2.constant = self.view.frame.size.height - 80*multiplier
+                        self.yForCV2.constant = self.view.frame.size.height - 70*multiplier
                     } else {
-                        self.yForCV3.constant = self.view.frame.size.height - 80*multiplier//self.yForCV2.constant + self.heightForCV1.constant - 80*multiplier
+                        self.yForCV3.constant = self.view.frame.size.height - 70*multiplier//self.yForCV2.constant + self.heightForCV1.constant - 80*multiplier
                     }
                 } else if self.collectionViewStack[0] == self.CV2 {
-                    self.yForCV1.constant = self.view.frame.size.height - 80*multiplier
+                    self.yForCV1.constant = self.view.frame.size.height - 70*multiplier
                 } else {//CV3
-                    self.yForCV2.constant = self.view.frame.size.height - 80*multiplier
+                    self.yForCV2.constant = self.view.frame.size.height - 70*multiplier
                 }
             }
         }
